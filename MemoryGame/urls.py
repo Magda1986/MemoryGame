@@ -21,6 +21,12 @@ from django.http import HttpResponse
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-  
+
+ #Ponizej dodaje sciezki zwiazane a moimi aplikacjami
+
+    #path("Gra", include("Gra.urls")),
+    #path("O_mnie", include("O_mnie.urls")),
+    #path("Statystyki", include("Statystyki.urls")),    
+   
     
 ]
