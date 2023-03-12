@@ -21,9 +21,6 @@ from django.http import HttpResponse
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    #poniej dodane moje ściezki (w imporcie dodane include)
-    #path(' ', include("MemoryGame.urls"))
-    path("homepage/", lambda request: HttpResponse("Tu będzie strona głowna aplikacji")),
-    path(" ", lambda request: HttpResponse("Test czy się pokze"))
+  
     
 ]
