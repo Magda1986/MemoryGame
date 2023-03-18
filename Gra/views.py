@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+def Gra(request):
+    return render(request, 'Gra/Gra.html', {})
+
+

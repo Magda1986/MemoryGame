@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>{% block title %}Title{% endblock %}</title>
+</head>
+<body style="background: #E8EAF6; font-family: Comic Sans MS;">
+<div id="content">
+    <div id="header">
+        <h1>{{ nazwa }}</h1>
+        </div>
+    <div id="inner-content">
+        {% block content %}
+        <h2>Najlepsza strona internetowa z grą Memory. </h2>
+        <li> <a href="http://127.0.0.1:8000/Gra"> Gra </li>
+        <li> <a href="http://127.0.0.1:8000/O_mnie">Strona o mnie </li>
+    
+        <img src="memo1.png" alt="Memo" title="image" width="600" height="400" border="2" style="margin: 20px 20px" >
+       {% endblock %}
+   </div>
+
+</div>
+</body>
+</html>
+
+

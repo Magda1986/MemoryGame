@@ -1,7 +1,14 @@
-from django.http import HttpResponse
+#from django.http import HttpResponse
 from django.shortcuts import render
 
-def homepage(*args, **kwargs):
-    return HttpResponse("Tutaj będzie strona startowa, i to z niej będzie przekierowanie na stronę 'GRA' i na stronę 'STATYSTYKI'")
+def Homepage(request):
+    return render(request, 'O_mnie/Homepage.html', {})
+
+def O_mnie(request):
+    return render(request, 'O_mnie/O_mnie.html', {})
+
+
+
+
 
 # Create your views here.
