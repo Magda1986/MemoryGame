@@ -1,5 +1,5 @@
 #from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .forms import NewMessageForm, NewCommentForm
 from .models import NewMessage, NewComment
 
@@ -20,20 +20,12 @@ def Kontakt_widok(request, *args, **kwargs):
     contex = {"objekt":obj}
     return render(request, "O_mnie/Kontakt_widok.html", contex)
 
-
-
 def new_message(request, *args, **kwargs):
     form = NewMessageForm(request.POST or None)
-    print(form)
     if form.is_valid():
-        my_first_message = form.save()
-        return redirect('/')
-
+        form.save
     contex = {"form": form}
     return render(request, "O_mnie/new_message.html", contex)
-
-
-
 
 def Komentarz(request, *args, **kwargs):
     contex = {"nazwa":"Komentarz"}
@@ -47,7 +39,7 @@ def Komentarz_widok(request, *args, **kwargs):
 def new_comment(request, *args, **kwargs):
     form = NewCommentForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        form.save
     contex = {"form": form}
     return render(request, "O_mnie/new_comment.html", contex)
 
