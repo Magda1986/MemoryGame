@@ -1,0 +1,16 @@
+{% extends "O_mnie/Homepage.html" %}
+{% block content %}
+Custom new message content
+<form action="/new_message" method="post">
+    {% csrf_token %}
+    {% comment %} <label for="your_name">Your name: </label>
+    <input id="your_name" type="text" name="name" maxlength="100" required><br>   
+    <label for="your_name2">Your name2: </label>
+    <input id="your_name2" type="text" name="name2" maxlength="100" required><br> 
+    <label for="your_name3">Your name3: </label>
+    <input id="your_name3" type="text" name="name3" maxlength="100" required><br>
+     {% endcomment %}
+     {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
