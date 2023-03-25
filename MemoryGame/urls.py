@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
-from O_mnie import views 
+from omnie import views 
 
 
 
@@ -25,9 +25,9 @@ urlpatterns = [
 
  #Ponizej dodaje sciezki zwiazane a moimi aplikacjami
     
-    path('', include("O_mnie.urls")),
+    path('', include("omnie.urls")),
     path("gra", include("gra.urls")),
-    #path("O_mnie/", include("O_mnie.urls")),
+    #path("omnie/", include("omnie.urls")),
     #path("Statystyki/", include("Statystyki.urls")),    
    
     

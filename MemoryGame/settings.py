@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     #Ponizej moje apki
 
     "gra",
-    "O_mnie",
-    "Statystyki",
+    "omnie",
+    #"Statystyki",
     
  
 
