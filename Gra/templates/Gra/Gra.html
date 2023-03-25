@@ -1,1 +1,11 @@
 {% extends "O_mnie/Homepage.html" %}
+
+{% block content %}
+Treść strony z grą: tutaj np formularz
+
+
+<form method="POST" class="post-form">{% csrf_token %}
+    {{ form }}
+</form>
+
+{% endblock %}

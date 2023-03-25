@@ -1,7 +1,7 @@
 from django import forms
 from .models import NewMessage, NewComment
 
-class NewMessageForm (forms.models):
+class NewMessageForm (forms.ModelForm):
     class Meta:
         model = NewMessage
         fields = [
@@ -11,7 +11,7 @@ class NewMessageForm (forms.models):
 
         ]
 
-class NewCommentForm (forms.models):
+class NewCommentForm (forms.ModelForm):
     class Meta:
         model = NewComment
         fields = [

@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <title>{% block title %}Title{% endblock %}</title>
 </head>
-<body style="background: #E8EAF6; font-family: Comic Sans MS;">
-<div id="content">
-    <div id="header">
+
+<body>
+<div>
+    <div>
         <h1>{{ nazwa }}</h1>
     </div>
-    <div id="inner-content">
-        {% include "paseknawigacyjny.html" %}
+
+    <div>
+    {% include "O_mnie/paseknawigacyjny.html" %}
+
     {% block content %}
-        <img src="memo1.png" alt="Memo" title="image" width="600" height="400" border="2" style="margin: 20px 20px" >
+        Jesteś na stronie głównej gry memory
     {% endblock %}
    </div>
 
 </div>
 </body>
+
 </html>
 
 
