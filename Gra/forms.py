@@ -14,7 +14,7 @@ class NewGameForm (forms.ModelForm):
     
     no_player2 = [
     ("player3", "Gram sam"),
-    ("player4", "Gram z komputerem")
+    ("player4", "Gram z przeciwnikiem (player2)")
     ]
     player2_select = forms.ChoiceField(choices=no_player2 )
     

@@ -13,6 +13,41 @@ Treść strony z grą: tutaj np formularz
     {% comment %} (mogę to powyzsze form zamienic na to co zostalo podeslane na slaczku) {% endcomment %}
     <input type="submit" value="START">
 </form>
+<br>
+<br>
+Poniej jeszcze raz formularz, zgodnie z tym co było na Slack'u i mówił Kuba
+<br>
+<br>
 
+<form method="POST" class="post-form">{% csrf_token %}
+    
+    {% comment %} (mogę to powyzsze form zamienic na to co zostalo podeslane na slaczku) {% endcomment %}
+    
+
+    {{ form.non_field_errors }}
+<div id="pole1" class="fieldWrapper">
+    {{ form.player2_select.errors }}
+    <label for="{{ form.player2_select.id_player2_select }}">Grasz z sam czy z kimś? (tu pole typu choice)</label>
+    {{ form.player2_select }}
+</div>
+<div class="fieldWrapper">
+    {{ form.player1.errors }}
+    <label for="{{ form.player1.id_player1 }}">Player1:</label>
+    {{ form.player1 }}
+</div>
+<div class="fieldWrapper">
+    {{ form.player2.errors }}
+    <label for="{{ form.player2.id_player2 }}">Player2:</label>
+    {{ form.player2 }}
+</div>
+<div class="fieldWrapper">
+    {{ form.number_cards.errors }}
+    <label for="{{ form.number_cards.id_number_cards }}">Liczba kart: (tu pole typu choice)</label>
+    {{ form.number_cards }}
+</div>
+<br>
+<input type="submit" value="START">
+
+</form>
 
 {% endblock %}
