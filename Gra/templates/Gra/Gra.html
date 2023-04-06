@@ -1,11 +1,16 @@
 {% extends "omnie/Homepage.html" %}
 
+{% block head%}
+{{ form.media }}
+{%endblock%}
+
 {% block content %}
 Treść strony z grą: tutaj np formularz
 
 
 <form method="POST" class="post-form">{% csrf_token %}
-    {{ form }}
+    {{ form }} 
+    {% comment %} (mogę to powyzsze form zamienic na to co zostalo podeslane na slaczku) {% endcomment %}
     <input type="submit" value="START">
 </form>
 
