@@ -15,7 +15,8 @@ ROZGRYWKA NUMER : {{ id }}
         {% for card in row %}
             <td>
                 {{ card }}  
-                <img src="{{ card }}.jpg">
+                <img src="staic/gra/0.jpg"/>
+                {% comment %} <img src="{{ card }}.jpeg"> - niestety to nie działa i to powyzej równiez!! :/ {% endcomment %}
             </td>
         
         {% endfor %}
