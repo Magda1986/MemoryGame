@@ -1,18 +1,19 @@
 {% extends "omnie/Homepage.html" %}
+{% load static %}
 
 {% block head%}
 {{ form.media }}
-{%endblock%}
+{%endblock%} 
 
 {% block content %}
 Treść strony z grą: tutaj np formularz
 
 
-<form method="POST" class="post-form">{% csrf_token %}
+{% comment %} <form method="POST" class="post-form">{% csrf_token %}
     {{ form }} 
-    {% comment %} (mogę to powyzsze form zamienic na to co zostalo podeslane na slaczku) {% endcomment %}
+    (mogę to powyzsze form zamienic na to co zostalo podeslane na slaczku)
     <input type="submit" value="START">
-</form>
+</form> {% endcomment %}
 <br>
 <br>
 Poniej jeszcze raz formularz, zgodnie z tym co było na Slack'u i mówił Kuba
@@ -35,7 +36,7 @@ Poniej jeszcze raz formularz, zgodnie z tym co było na Slack'u i mówił Kuba
     <label for="{{ form.player1.id_player1 }}">Player1:</label>
     {{ form.player1 }}
 </div>
-<div class="fieldWrapper">
+<div id="div_player2" class="fieldWrapper">
     {{ form.player2.errors }}
     <label for="{{ form.player2.id_player2 }}">Player2:</label>
     {{ form.player2 }}
@@ -50,4 +51,11 @@ Poniej jeszcze raz formularz, zgodnie z tym co było na Slack'u i mówił Kuba
 
 </form>
 
+
+
+
+
 {% endblock %}
+
+{% comment %} --------- Uwagi do tego co na górze 
+{{ form.media }} - link do JS  {% endcomment %}
