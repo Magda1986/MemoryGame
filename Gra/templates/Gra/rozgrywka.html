@@ -5,10 +5,12 @@
 {% block head %}
 <style>
     table {border-collapse: collapse;} 
-    td {border-style: solid; border-width: 1px; padding: 5px; text-align: center;}
-    img {width: 100px;}
+    td {border-style: solid; border-width: 5px; border-color: white; padding: 5px; text-align: center; background-color: black; transition: 0.5s; }
+    {% comment %} td:hover {background-color: white;} {% endcomment %}
+    img {width: 100px; filter: brightness(0.0); transition: 0.5s; }
+    {% comment %} img:hover {filter: brightness(1.0);} {% endcomment %}
 </style>
-
+<script src="{% static 'gra/playboard.js' %}"></script>
 {% endblock %}
 {% block content %}
 

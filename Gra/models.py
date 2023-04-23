@@ -13,7 +13,7 @@ class NewGame(models.Model):
     number_cards = models.CharField(max_length = 15, choices=cards)
     #number_cards = models.DecimalField(default=10 , max_digits=20, decimal_places=0)
 
-    #Nadpisywanie funkcji safe do sprawdzeniam - do sprawdzenia. podczas zapisywania modelu tworzy się plansza!! W klasie name NADPISYWANIE FUNKCJI SAVE W DJANGO!! 
+    #Nadpisywanie funkcji save do sprawdzeniam - do sprawdzenia. podczas zapisywania modelu tworzy się plansza!! W klasie name NADPISYWANIE FUNKCJI SAVE W DJANGO!! 
     # POLE PLANSZA
     # BLANCK
     # w trakcie swywołania funkcji save w tworzy sie playground 
