@@ -20,9 +20,7 @@ ROZGRYWKA NUMER : {{ id }}
     <tr>
         {% for card in row %}
             <td>
-                {% comment %} {{ card }}   {% endcomment %}
                 <img src="{% static 'gra/' %}{{ card }}.jpeg"/>
-                {% comment %} <img src="{{ card }}.jpeg"/> {% endcomment %}
             </td>
         
         {% endfor %}
