@@ -6,7 +6,7 @@
 {%endblock%} 
 
 {% block content %}
-Treść strony z grą: tutaj np formularz
+Uzupełnij poniszy formularz, zeby rozpocząć rozgrywkę. 
 
 
 {% comment %} <form method="POST" class="post-form">{% csrf_token %}
@@ -14,8 +14,6 @@ Treść strony z grą: tutaj np formularz
     (mogę to powyzsze form zamienic na to co zostalo podeslane na slaczku)
     <input type="submit" value="START">
 </form> {% endcomment %}
-<br>
-<br>
 {% comment %} Poniej jeszcze raz formularz, zgodnie z tym co było na Slack'u i mówił Kuba {% endcomment %}
 <br>
 <br>
@@ -28,7 +26,7 @@ Treść strony z grą: tutaj np formularz
     {{ form.non_field_errors }}
 <div id="pole1" class="fieldWrapper">
     {{ form.player2_select.errors }}
-    <label for="{{ form.player2_select.id_player2_select }}">Grasz z sam czy z kimś? (tu pole typu choice)</label>
+    <label for="{{ form.player2_select.id_player2_select }}">Grasz z sam czy z kimś?</label>
     {{ form.player2_select }}
 </div>
 <div class="fieldWrapper">
@@ -43,11 +41,11 @@ Treść strony z grą: tutaj np formularz
 </div>
 <div class="fieldWrapper">
     {{ form.number_cards.errors }}
-    <label for="{{ form.number_cards.id_number_cards }}">Liczba kart: (tu pole typu choice)</label>
+    <label for="{{ form.number_cards.id_number_cards }}">Liczba kart:</label>
     {{ form.number_cards }}
 </div>
 <br>
-<input type="submit" value="START">
+<input type="submit" value="Rozpocznij grę">
 
 </form>
 
