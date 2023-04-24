@@ -26,7 +26,7 @@ urlpatterns = [
  #Ponizej dodaje sciezki zwiazane a moimi aplikacjami
     
     path('', include("omnie.urls")),
-    path("gra", include("gra.urls")),
+    path("gra/", include("gra.urls")),
     #path("omnie/", include("omnie.urls")),
     #path("Statystyki/", include("Statystyki.urls")),    
    
