@@ -6,6 +6,7 @@
 {%endblock%} 
 
 {% block content %}
+<br>
 Uzupełnij poniszy formularz, zeby rozpocząć rozgrywkę. 
 
 
@@ -22,23 +23,25 @@ Uzupełnij poniszy formularz, zeby rozpocząć rozgrywkę.
     
     {% comment %} (mogę to powyzsze form zamienic na to co zostalo podeslane na slaczku) {% endcomment %}
     
-
     {{ form.non_field_errors }}
 <div id="pole1" class="fieldWrapper">
     {{ form.player2_select.errors }}
     <label for="{{ form.player2_select.id_player2_select }}">Grasz z sam czy z kimś?</label>
     {{ form.player2_select }}
 </div>
+<br>
 <div class="fieldWrapper">
     {{ form.player1.errors }}
     <label for="{{ form.player1.id_player1 }}">Player1:</label>
     {{ form.player1 }}
 </div>
+<br>
 <div id="div_player2" class="fieldWrapper">
     {{ form.player2.errors }}
     <label for="{{ form.player2.id_player2 }}">Player2:</label>
     {{ form.player2 }}
 </div>
+<br>
 <div class="fieldWrapper">
     {{ form.number_cards.errors }}
     <label for="{{ form.number_cards.id_number_cards }}">Liczba kart:</label>
