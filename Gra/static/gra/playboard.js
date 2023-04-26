@@ -1,9 +1,3 @@
-// $(document).ready(()=>{
-// $('td').each(function(index){var td = $(this).click(function(){
-//     console.log(this);
-//     this.style.backgroundColor = "white";
-//     this.children[0].style.filter = "brightness(1.0)s"
-// })})})
 
 // $(document).ready(() => {
 //     $('td').each(function(index) {
@@ -16,68 +10,142 @@
 //     });
 //   });
 
+//______________________________________________________________________________________
+
+
 $(document).ready(() => {
   let firstCard = null;
-  $('td').each(function(index) {
-    const td = $(this);
-    td.click(() => {
-      td.css('background-color', 'white');
-      td.children('img').css('filter', 'brightness(100%)');
+  let secondCard = null;
 
-      if (!firstCard) {
-        firstCard = td;
+  $('td').click(function() {
+    const currentCard = $(this);
+    const currentImg = currentCard.children('img');
+    
+    if (firstCard === null) {
+      // Odkrycie pierwszej karty
+      currentCard.css('background-color', 'white');
+      currentImg.css('filter', 'brightness(100%)');
+      firstCard = currentCard;
+    } else if (secondCard === null) {
+      // Odkrycie drugiej karty
+      const firstImg = firstCard.children('img');
+      currentCard.css('background-color', 'white');
+      currentImg.css('filter', 'brightness(100%)');
+      secondCard = currentCard;
+    
+      // Sprawdzenie, czy odkryte karty są takie same
+      const secondImg = secondCard.children('img');
+      if (currentImg.attr('src') === secondImg.attr('src')) {
+        // Odkryte karty są takie same
+        setTimeout(() => {
+          currentCard.css('background-color', '');
+          currentImg.css('filter', '');
+          secondCard.css('background-color', '');
+          secondImg.css('filter', '');
+          // currentImg.attr('src', '');
+          // secondImg.attr('src', '');
+        }, 3000);
       } else {
-        const firstCardName = firstCard.children('img').attr('alt');
-        const secondCardName = td.children('img').attr('alt');
-        if (firstCardName === secondCardName) {
-          firstCard.fadeOut();
-          td.fadeOut();
-        } else {
-          setTimeout(() => {
-            firstCard.css('background-color', '');
-            firstCard.children('img').css('filter', '');
-            td.css('background-color', '');
-            td.children('img').css('filter', '');
-          }, 4000);
-        }
-        firstCard = null;
+        // Odkryte karty są różne
+        setTimeout(() => {
+          currentCard.css('background-color', '');
+          currentImg.css('filter', 'brightness(0%)');
+          secondCard.css('background-color', '');
+          secondImg.css('filter', 'brightness(0%)');
+        }, 3000);
       }
-    });
+      firstCard = null;
+      secondCard = null;
+    }
   });
 });
 
 
+// ---------------------0000000000000000000000000--------------------------------
+// Ten poniej tez fajny:
+
 // $(document).ready(() => {
 //   let firstCard = null;
-  
-//   $('td').each(function() {
+//   $('td').click(function() {
+//     const currentCard = $(this);
+//     const currentImg = currentCard.children('img');
+    
+//     if (firstCard === null) {
+//       // Odkrycie pierwszej karty
+//       currentCard.css('background-color', 'white');
+//       currentImg.css('filter', 'brightness(100%)');
+//       firstCard = currentCard;
+//     } else {
+//       // Odkrycie drugiej karty
+//       const firstImg = firstCard.children('img');
+//       currentCard.css('background-color', 'white');
+//       currentImg.css('filter', 'brightness(100%)');
+      
+//       if (currentImg.attr('src') === firstImg.attr('src')) {
+//         // Odkryte karty są takie same
+//         setTimeout(() => {
+//           currentCard.css('background-color', '');
+//           currentImg.css('filter', '');
+//           firstCard.css('background-color', '');
+//           firstImg.css('filter', '');
+//           currentImg.attr('src', '');
+//           firstImg.attr('src', '');
+//         }, 3000);
+//       } else {
+//         // Odkryte karty są różne
+//         setTimeout(() => {
+//           currentCard.css('background-color', '');
+//           currentImg.css('filter', '');
+//           firstCard.css('background-color', '');
+//           firstImg.css('filter', '');
+//         }, 3000);
+//       }
+//       firstCard = null;
+//     }
+//   });
+// });
+
+
+//-----------------------------------------------------------------------------------------------------------
+// - to co na GIT
+
+
+// $(document).ready(() => {
+//   let firstCard = null;
+//   let secondCard = null;
+//   $('td').each(function(index) {
 //     const td = $(this);
 //     td.click(() => {
 //       td.css('background-color', 'white');
 //       td.children('img').css('filter', 'brightness(100%)');
-      
-//       if (firstCard == null) {
+
+//       if (!firstCard) {
 //         firstCard = td;
 //       } else {
 //         const firstCardName = firstCard.children('img').attr('alt');
 //         const secondCardName = td.children('img').attr('alt');
-        
-//         if (firstCardName == secondCardName) {
-//           setTimeout(() => {
-//             firstCard.children('img').fadeOut();
-//             td.children('img').fadeOut();
-//           }, 2000);
+//         if (firstCardName === secondCardName) {
+//           firstCard.children('img').attr('src', '');
+//           firstCard.css('background-color', 'white');
+//           td.children('img').attr('src', '');
+//           td.css('background-color', 'white');
 //         } else {
 //           setTimeout(() => {
-//             firstCard.css('background-color', 'blue');
-//             firstCard.children('img').css('filter', 'brightness(50%)');
-//             td.css('background-color', 'blue');
-//             td.children('img').css('filter', 'brightness(50%)');
-//           }, 2000);
+//             firstCard.css('background-color', '');
+//             firstCard.children('img').css('filter', '');
+//             td.css('background-color', '');
+//             td.children('img').css('filter', '');
+//           }, 3000);
 //         }
-        
 //         firstCard = null;
+//         secondCard = null;
 //       }
 //     });
 //   });
 // });
+
+
+
+// koniec działającego kodu
+
+
