@@ -8,11 +8,30 @@ $(document).ready(() => {
   var csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
   const movesDisplay = $('#moves-count'); // zmienn movesDisplay, przechowuje referencję do elementu HTML o identyfikatorze moves-count
   const pairsTotal = parseInt($('#pairs-count').text()); //const - constans - zmienna, ktora sie nie zmienia w trakcie trwania rozgrywki
+  console.log(moves);
+//AJAX
 
-
-  $('td').click(function() {
-    const currentCard = $(this);
-    const currentImg = currentCard.children('img');
+$('td').click(function() {
+  const currentCard = $(this);
+  const currentImg = currentCard.children('img');
+  $.ajax({
+    url: 'moves/',
+    type: 'POST',
+    headers: {
+      'X-CSRFToken': csrf_token
+    },
+    data: {
+      'moves': moves,
+    },
+    dataType: 'json',
+    success: function(response) {
+      movesDisplay.text(response.moves);
+    },
+    error: function(xhr, status, error) {
+      console.log('Wystąpił błąd:', error);
+    }
+  });
+//AJAX koniec
 
     if (!currentCard.hasClass('locked')) {
       if (firstCard === null) {
@@ -35,16 +54,13 @@ $(document).ready(() => {
           currentCard.css('background-color', 'grey')
           firstImg.css('filter', 'brightness(50%)');
           firstCard.css('background-color', 'grey')
-          moves++; //rownowazne  =+1
+          moves ++; //rownowazne  +=1
           console.log(moves); // wyswietlatnie wartości zmiennej moves na konsoli przeglądarki po każdym zwiększeniu
           movesDisplay.text(moves);
-          pairsFound++; //rownowazne  =+1
+          pairsFound++; //rownowazne  +=1
           firstCard = null;
           secondCard = null;
-
-          // if (pairsFound === pairsTotal) {
-          //   alert('Brawo! To już koniec gry!');
-          // }
+          
           if (pairsFound === pairsTotal) {
             const endGameMessage = document.getElementById('end-game-message');
             endGameMessage.textContent = 'Brawo! To już koniec gry!';
@@ -52,9 +68,9 @@ $(document).ready(() => {
          
           //$('td.locked').removeClass('locked');
           
-//Tu konczy sie Ajax
 
-        } else {
+        } 
+        else {
           // Karty różne
           setTimeout(() => {
             currentCard.css('background-color', 'black');
@@ -69,23 +85,7 @@ $(document).ready(() => {
             $('td.locked').removeClass('locked');
           }, 2000);
         }
-        $.ajax({
-          url: 'moves/',
-          type: 'POST',
-          headers: {
-            'X-CSRFToken': csrf_token
-          },
-          data: {
-            'moves': moves,
-          },
-          dataType: 'json',
-          success: function(response) {
-            movesDisplay.text(response.moves);
-          },
-          error: function(xhr, status, error) {
-            console.log('Wystąpił błąd:', error);
-          }
-        });
+   
 
       }
     }

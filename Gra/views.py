@@ -32,28 +32,31 @@ def moves(request, id):
     else:
         return JsonResponse({'success': False})
 
-# def moves(request):
-#     if request.method == 'POST':
-#         id = request.session.get('id')
-#         game = NewGame.objects.get(id=id)
-#         moves = request.POST.get('moves')
-#         print(moves) # wypisuje na konsoli wartość moves
-#         game.moves = moves
-#         game.save()
-#         return JsonResponse({'success': True})
-#     else:
-#         return JsonResponse({'success': False})
+def wyniki(request):
+    # pobierz wszystkie obiekty NewGame z bazy danych
+    wyniki = NewGame.objects.all()
 
+    # zainicjuj pustą listę, do której będziemy dodawać wyniki
+    wyniki_list = []
 
+    # przejdź przez każdy obiekt NewGame i dodaj go do listy wyników
+    for wynik in wyniki:
+        # pobierz nazwy graczy, liczbę par i liczbę ruchów dla każdej gry
+        player1 = wynik.player1
+        player2 = wynik.player2
+        pairs_total = wynik.pairs_total
+        moves = wynik.moves
 
-# def count_moves(request):
-#     if request.method == 'POST':
-#         moves = request.POST.get('moves')
-#         # wykonaj dowolne operacje na liczniku ruchów
-#         return JsonResponse({'success': True})
-#     else:
-#         return JsonResponse({'success': False})
+        # dodaj wyniki do listy wyników
+        wyniki_list.append({
+            'player1': player1,
+            'player2': player2,
+            'pairs_total': pairs_total,
+            'moves': moves
+        })
 
+    # przekaż listę wyników do szablonu HTML
+    return render(request, 'gra/wyniki.html', {'wyniki': wyniki_list})
 
 
 
@@ -62,51 +65,6 @@ def moves(request, id):
 #     shuffle(deck)# tasowanie
 #     return [deck[i: i+row_len] for i in range(0, len(deck), row_len)] #ukladanie kart na planszy
 
-# def create_playboard(number_cards, row_len=4):
-#     deck = 2 * list(range(int(0.5 * number_cards)))  #tworzymy talie kart
-#     shuffle(deck)# tasowanie
-#     return [deck[i: i+row_len] for i in range(0, len(deck), row_len)] #ukladanie kart na planszy
 
-
-
-# def rozgrywka(request, id):
-#     if request.method == "POST":
-#         number_cards = request.POST.get("number_cards")
-#     else:
-#         number_cards = 16
-    
-#     cards = create_playboard(number_cards)
-#     context = {"cards": cards, "id": id}
-#     return render(request, "gra/rozgrywka.html", context)
-
-#----------------------------
-
-# def rozgrywka(request, id):
-#     if request.method == "POST":
-#         form = NewGameForm(request.POST)
-#         if form.is_valid():
-#             number_cards = form.cleaned_data.get("number_cards")
-#         else:
-#             number_cards = 16
-#     else:
-#         number_cards = 16
-    
-#     cards = create_playboard(number_cards)
-#     context = {"cards": cards, "id": id}
-#     return render(request, "gra/rozgrywka.html", context)
-#-----------------------
-
-# def rozgrywka(request, id):
-#     game = NewGame.objects.get(id=id)
-#     number_cards = game.number_cards
-#     cards = create_playboard(number_cards)
-#     context = {"cards": cards, "id": id}
-#     return render(request, "gra/rozgrywka.html", context)
-   
-   
-   
-   
-    #contex = {"nazwa":"Gra"}
-    #return render(request, 'Gra/Gra.html', contex)
 
 

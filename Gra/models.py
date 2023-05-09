@@ -28,6 +28,9 @@ class NewGame(models.Model):
         self.pairs_total = int((self.number_cards)/2)
         super().save(*args, **kwargs)
 
+
+
+
     #number_cards = models.DecimalField(default=10 , max_digits=20, decimal_places=0)
 
     #Nadpisywanie funkcji save do sprawdzeniam - do sprawdzenia. podczas zapisywania modelu tworzy się plansza!! W klasie name NADPISYWANIE FUNKCJI SAVE W DJANGO!! 
