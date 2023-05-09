@@ -21,8 +21,6 @@ Uzupełnij poniszy formularz, zeby rozpocząć rozgrywkę.
 
 <form method="POST" class="post-form">{% csrf_token %}
     
-    {% comment %} (mogę to powyzsze form zamienic na to co zostalo podeslane na slaczku) {% endcomment %}
-    
     {{ form.non_field_errors }}
 <div id="pole1" class="fieldWrapper">
     {{ form.player2_select.errors }}

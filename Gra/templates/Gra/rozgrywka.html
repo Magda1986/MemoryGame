@@ -9,34 +9,33 @@
     table {border-collapse: collapse;} 
     td {border-style: solid; border-width: 5px; border-color: white; padding: 5px; text-align: center; background-color: black; transition: 0.5s; }
     img {width: 100px; filter: brightness(0.0); transition: 0.5s; }
+    #end-game-message {
+        color: #ff3333;
+        font-size: 80px;
+        font-family: Helvetica, sans-serif;
+      }
+   
 </style>
-
-
-{% comment %} <style>
-    table {
-      border-collapse: collapse;
-    }
-    
-    td {
-      width: 200px;
-      height: 200px;
-      border: 1px solid black;
-      text-align: center;
-    }
-    
-    .card {
-      width: 150px;
-      height: 150px;
-      filter: brightness(0%);
-    }
-
-</style> {% endcomment %}
+{% csrf_token %}
 
 <script src="{% static 'gra/playboard.js' %}"></script>
 {% endblock %}
 {% block content %}
+<span>
+ROZGRYWKA NUMER : {{ id }}<br><br>
 
-ROZGRYWKA NUMER : {{ id }}
+{% comment %} Łaczna ilosc par na stole to: {{ pairs_total }}<br><br> {% endcomment %}
+Liczba par na stole: <span id="pairs-count">{{ pairs_total }}</span><br><br>
+
+Gracz 1: {{ player1 }}<br><br>
+
+Gracz 2: {{ player2 }}<br><br>
+
+Liczba ruchów: <span id="moves-count">{{ moves }}</span><br><br>
+</span>
+
+<div id="end-game-message"></div>
+
 <table style="border-width: 3px; ">
     {% for row in cards %}
     <tr>
@@ -49,7 +48,6 @@ ROZGRYWKA NUMER : {{ id }}
     </tr>
     {% endfor %}
 </table>
-
 
 
 

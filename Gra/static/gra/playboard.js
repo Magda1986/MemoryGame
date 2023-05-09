@@ -1,12 +1,14 @@
 
 
-
-// --------------------- setne podejście do problemy poniej --------------------------------
-
-
 $(document).ready(() => {
   let firstCard = null;
   let secondCard = null;
+  let pairsFound = 0; // let - zmienna, która zmienia się w trakcie trwania rozgrywki
+  let moves = 0; //Licznik ruchow
+  var csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+  const movesDisplay = $('#moves-count'); // zmienn movesDisplay, przechowuje referencję do elementu HTML o identyfikatorze moves-count
+  const pairsTotal = parseInt($('#pairs-count').text()); //const - constans - zmienna, ktora sie nie zmienia w trakcie trwania rozgrywki
+
 
   $('td').click(function() {
     const currentCard = $(this);
@@ -33,10 +35,25 @@ $(document).ready(() => {
           currentCard.css('background-color', 'grey')
           firstImg.css('filter', 'brightness(50%)');
           firstCard.css('background-color', 'grey')
-
+          moves++; //rownowazne  =+1
+          console.log(moves); // wyswietlatnie wartości zmiennej moves na konsoli przeglądarki po każdym zwiększeniu
+          movesDisplay.text(moves);
+          pairsFound++; //rownowazne  =+1
           firstCard = null;
           secondCard = null;
+
+          // if (pairsFound === pairsTotal) {
+          //   alert('Brawo! To już koniec gry!');
+          // }
+          if (pairsFound === pairsTotal) {
+            const endGameMessage = document.getElementById('end-game-message');
+            endGameMessage.textContent = 'Brawo! To już koniec gry!';
+          }
+         
           //$('td.locked').removeClass('locked');
+          
+//Tu konczy sie Ajax
+
         } else {
           // Karty różne
           setTimeout(() => {
@@ -46,74 +63,32 @@ $(document).ready(() => {
             firstImg.css('filter', 'brightness(0%)');
             firstCard = null;
             secondCard = null;
+            moves++; //rownowazne moves =+1
+            console.log(moves); // wyswietlatnie wartości zmiennej moves na konsoli przeglądarki po każdym zwiększeniu
+            movesDisplay.text(moves);
             $('td.locked').removeClass('locked');
           }, 2000);
         }
+        $.ajax({
+          url: 'moves/',
+          type: 'POST',
+          headers: {
+            'X-CSRFToken': csrf_token
+          },
+          data: {
+            'moves': moves,
+          },
+          dataType: 'json',
+          success: function(response) {
+            movesDisplay.text(response.moves);
+          },
+          error: function(xhr, status, error) {
+            console.log('Wystąpił błąd:', error);
+          }
+        });
+
       }
     }
   });
 });
 
-
-__________________________________________________________________________________
-//to prawie to o co mi chodzi
-
-// $(document).ready(() => {
-//   let firstCard = null;
-//   let secondCard = null;
-//   let isChecking = false;
-
-//   $('td').click(function() {
-//     if (isChecking) {
-//       return;
-//     }
-    
-//     const currentCard = $(this);
-//     const currentImg = currentCard.children('img');
-
-//     if (firstCard === null) {
-//       // Odkrycie pierwszej karty
-//       currentCard.css('background-color', 'white');
-//       currentImg.css('filter', 'brightness(100%)');
-//       firstCard = currentCard;
-//     } else if (secondCard === null) {
-//       // Odkrycie drugiej karty
-//       const firstImg = firstCard.children('img');
-//       currentCard.css('background-color', 'white');
-//       currentImg.css('filter', 'brightness(100%)');
-//       secondCard = currentCard;
-
-//       // Blokowanie kliknięć na kartach podczas sprawdzania, czy dwie karty są takie same
-//       isChecking = true;
-
-//       // Sprawdzenie, czy dwie karty są takie same
-//       if (currentImg.attr('src') === firstImg.attr('src')) {
-//         // Karty są takie same
-//         setTimeout(() => {
-//           currentCard.css('background-color', 'black');
-//           firstCard.css('background-color', 'black');
-//           currentImg.css('filter', 'brightness(0%)');
-//           firstImg.css('filter', 'brightness(0%)');
-//           firstCard = null;
-//           secondCard = null;
-
-//           // Odblokowanie kliknięć na kartach
-//           isChecking = false;
-//         }, 2000);
-//       } else {
-//         // Karty nie są takie same
-//         setTimeout(() => {
-//           currentCard.css('background-color', 'black');
-//           firstCard.css('background-color', 'black');
-//           currentImg.css('filter', 'brightness(0%)');
-//           firstImg.css('filter', 'brightness(0%)');
-//           firstCard = null;
-//           secondCard = null;
-
-//           // Odblokowanie kliknięć na kartach
-//           isChecking = false;
-//         }, 2000);
-//       }
-//     }
-//   });
-// });

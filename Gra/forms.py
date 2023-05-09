@@ -17,4 +17,9 @@ class NewGameForm (forms.ModelForm):
     ("player4", "Gram z przeciwnikiem (player2)")
     ]
     player2_select = forms.ChoiceField(choices=no_player2 )
+
+class MoveForm(forms.ModelForm):
+    class Meta:
+        model = NewGame
+        fields = ["moves"]
     

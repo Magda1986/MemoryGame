@@ -20,9 +20,12 @@ class NewGame(models.Model):
     player2 = models.CharField(max_length = 15, blank=True)
     number_cards = models.IntegerField(choices=cards)
     playboard = models.JSONField(blank=True, null=True) #generuje sie jako pusty
+    pairs_total = models.IntegerField(blank=False, null=True)
+    moves = models.IntegerField(default=0) # pole liczące ruchy graczy
     
     def save(self, *args, **kwargs):
         self.playboard = create_playboard(self.number_cards)
+        self.pairs_total = int((self.number_cards)/2)
         super().save(*args, **kwargs)
 
     #number_cards = models.DecimalField(default=10 , max_digits=20, decimal_places=0)
