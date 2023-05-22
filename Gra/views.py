@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import NewGameForm
 #from jinja2 import Template
 from random import shuffle
-from .models import NewGame
+from .models import NewGame, create_playboard
 from django.http import JsonResponse
 
 
@@ -10,6 +10,10 @@ def gra(request, *args, **kwargs):
     form = NewGameForm(request.POST or None)
     if form.is_valid():
         test = form.save()
+        test.playboard = create_playboard(test.number_cards)
+        test.pairs_total = int((test.number_cards)/2) 
+        test.save()
+        game=NewGame.objects.get(id=test.id)
         return redirect(f"rozgrywka/{test.id}/")
     contex = {"nazwa" : "gra", "form" : form, }
     return render(request, "gra/gra.html", contex)

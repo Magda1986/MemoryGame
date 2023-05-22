@@ -24,8 +24,8 @@ class NewGame(models.Model):
     moves = models.IntegerField(default=0) # pole liczące ruchy graczy
     
     def save(self, *args, **kwargs):
-        self.playboard = create_playboard(self.number_cards)
-        self.pairs_total = int((self.number_cards)/2)
+        # self.playboard = create_playboard(self.number_cards)
+        # self.pairs_total = int((self.number_cards)/2)
         super().save(*args, **kwargs)
 
 

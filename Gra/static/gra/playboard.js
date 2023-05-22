@@ -12,24 +12,6 @@ $(document).ready(() => {
     $('td').click(function() {
       const currentCard = $(this);
       const currentImg = currentCard.children('img');
-      $.ajax({
-        url: 'moves/',
-        type: 'POST',
-        headers: {
-          'X-CSRFToken': csrf_token
-        },
-        data: {
-          'moves': moves,
-        },
-        dataType: 'json',
-        success: function(response) {
-          movesDisplay.text(response.moves);
-        },
-        error: function(xhr, status, error) {
-          console.log('Wystąpił błąd:', error);
-        }
-      });
-//AJAX koniec
 
     if (!currentCard.hasClass('locked')) {
       if (firstCard === null) {
@@ -45,6 +27,25 @@ $(document).ready(() => {
         currentImg.css('filter', 'brightness(100%)');
         secondCard = currentCard;
         currentCard.addClass('locked');
+        moves++;
+
+        $.ajax({
+          url: 'moves/',
+          type: 'POST',
+          headers: {
+            'X-CSRFToken': csrf_token
+          },
+          data: {
+            'moves': moves,
+          },
+          dataType: 'json',
+          success: function(response) {
+            movesDisplay.text(response.moves);
+          },
+          error: function(xhr, status, error) {
+            console.log('Wystąpił błąd:', error);
+          }
+        });
 
         if (currentImg.attr('src') === firstImg.attr('src')) {
           // Karty takie same
@@ -52,7 +53,7 @@ $(document).ready(() => {
           currentCard.css('background-color', 'grey')
           firstImg.css('filter', 'brightness(50%)');
           firstCard.css('background-color', 'grey')
-          moves ++; //rownowazne  +=1
+          // moves ++; //rownowazne  +=1
           console.log(moves); // wyswietlatnie wartości zmiennej moves na konsoli przeglądarki po każdym zwiększeniu
           movesDisplay.text(moves);
           pairsFound++; //rownowazne  +=1
@@ -65,8 +66,6 @@ $(document).ready(() => {
           }
          
           //$('td.locked').removeClass('locked');
-          
-
         } 
         else {
           // Karty różne
@@ -77,14 +76,12 @@ $(document).ready(() => {
             firstImg.css('filter', 'brightness(0%)');
             firstCard = null;
             secondCard = null;
-            moves++; //rownowazne moves =+1
+            // moves++; //rownowazne moves =+1
             console.log(moves); // wyswietlatnie wartości zmiennej moves na konsoli przeglądarki po każdym zwiększeniu
             movesDisplay.text(moves);
             $('td.locked').removeClass('locked');
           }, 2000);
         }
-   
-
       }
     }
   });
