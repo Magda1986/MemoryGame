@@ -33,10 +33,10 @@ def moves(request, id):
         return JsonResponse({'success': False})
 
 def wyniki(request):
-    # pobierz wszystkie obiekty NewGame z bazy danych
+    # pobieramy wszystkie obiekty NewGame z bazy danych
     wyniki = NewGame.objects.all()
 
-    # zainicjuj pustą listę, do której będziemy dodawać wyniki
+    # inicjujemu pustą listę, do której będziemy dodawać wyniki
     wyniki_list = []
 
     # przejdź przez każdy obiekt NewGame i dodaj go do listy wyników
@@ -47,7 +47,7 @@ def wyniki(request):
         pairs_total = wynik.pairs_total
         moves = wynik.moves
 
-        # dodaj wyniki do listy wyników
+        # dodajemy wyniki do listy wyników
         wyniki_list.append({
             'player1': player1,
             'player2': player2,
@@ -55,7 +55,7 @@ def wyniki(request):
             'moves': moves
         })
 
-    # przekaż listę wyników do szablonu HTML
+    # przekazuję listę wyników do szablonu HTML
     return render(request, 'gra/wyniki.html', {'wyniki': wyniki_list})
 
 

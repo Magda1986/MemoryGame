@@ -1,36 +1,34 @@
-
-
 $(document).ready(() => {
   let firstCard = null;
   let secondCard = null;
   let pairsFound = 0; // let - zmienna, która zmienia się w trakcie trwania rozgrywki
   let moves = 0; //Licznik ruchow
-  var csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+  let csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
   const movesDisplay = $('#moves-count'); // zmienn movesDisplay, przechowuje referencję do elementu HTML o identyfikatorze moves-count
   const pairsTotal = parseInt($('#pairs-count').text()); //const - constans - zmienna, ktora sie nie zmienia w trakcie trwania rozgrywki
   console.log(moves);
-//AJAX
 
-$('td').click(function() {
-  const currentCard = $(this);
-  const currentImg = currentCard.children('img');
-  $.ajax({
-    url: 'moves/',
-    type: 'POST',
-    headers: {
-      'X-CSRFToken': csrf_token
-    },
-    data: {
-      'moves': moves,
-    },
-    dataType: 'json',
-    success: function(response) {
-      movesDisplay.text(response.moves);
-    },
-    error: function(xhr, status, error) {
-      console.log('Wystąpił błąd:', error);
-    }
-  });
+
+    $('td').click(function() {
+      const currentCard = $(this);
+      const currentImg = currentCard.children('img');
+      $.ajax({
+        url: 'moves/',
+        type: 'POST',
+        headers: {
+          'X-CSRFToken': csrf_token
+        },
+        data: {
+          'moves': moves,
+        },
+        dataType: 'json',
+        success: function(response) {
+          movesDisplay.text(response.moves);
+        },
+        error: function(xhr, status, error) {
+          console.log('Wystąpił błąd:', error);
+        }
+      });
 //AJAX koniec
 
     if (!currentCard.hasClass('locked')) {

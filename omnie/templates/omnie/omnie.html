@@ -1,5 +1,51 @@
 {% extends "omnie/Homepage.html" %}
 
 {% block content %}
-Treść strony "O mnie"
+<!DOCTYPE html>
+<html>
+<head>
+  <title>O Mnie - Niepowtarzalna Ja</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #FF9800;
+    }
+
+    .fun-fact {
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .game-link {
+      font-weight: bold;
+      color: #FF4081;
+    }
+  </style>
+</head>
+<body>
+  <h1>Witaj na stronie Niepowtarzalnej Ja!</h1>
+
+  <h2>O Mnie</h2>
+  <p>Cześć, jestem zwyczajną kobietą, mama trzech niesamowitych synów i jestem mistrzyni w multitaskingu!</p>
+
+  <div class="fun-fact">
+    <p>Zastanawiasz się, jakie mam supermoce jako mama? Oto jedna z nich: potrafię odkurzać, gotować i zamieniać bieżące sytuacje w stand-up comedy - jednocześnie!</p>
+  </div>
+
+  <h2>Moje Dzieło - Memo Game</h2>
+  <p>Jednym z moich największych osiągnięć jako matki było stworzenie wspaniałej gry memo dla moich synów. To połączenie nauki i zabawy!</p>
+
+  <div class="game-link">
+    <p>Zapraszam Cię do zagrania w Memo Game! Kliknij <a href="http://127.0.0.1:8000/gra/">tutaj</a>, aby zacząć przygodę!</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 Niepowtarzalna Ja. Wszystkie prawa zastrzeżone.</p>
+  </footer>
+</body>
+</html>
 {% endblock %}
