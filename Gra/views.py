@@ -49,14 +49,14 @@ def wyniki(request):
         player2 = wynik.player2
         pairs_total = wynik.pairs_total
         moves = wynik.moves
-
+        if pairs_total is not None and moves is not None and moves !=0:
         # dodajemy wyniki do listy wyników
-        wyniki_list.append({
-            'player1': player1,
-            'player2': player2,
-            'pairs_total': pairs_total,
-            'moves': moves
-        })
+            wyniki_list.append({
+                'player1': player1,
+                'player2': player2,
+                'pairs_total': pairs_total,
+                'moves': moves
+            })
     
     context = {
         'nazwa': 'Wyniki Gry',

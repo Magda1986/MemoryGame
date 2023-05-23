@@ -1,9 +1,26 @@
 {% extends "omnie/Homepage.html" %}
 {% load static %}
 
+
 {% block content %}
+<style>
+    .start-game-button {
+        background-color: #FF4081;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .start-game-button:hover {
+        background-color: #E91E63;
+    }
+</style>
+
 <br>
-Uzupełnij poniszy formularz, zeby rozpocząć rozgrywkę. 
+<h1>Uzupełnij poniszy formularz, zeby rozpocząć rozgrywkę. </h1>
 
 <br>
 <br>
@@ -35,11 +52,10 @@ Uzupełnij poniszy formularz, zeby rozpocząć rozgrywkę.
     {{ form.number_cards }}
 </div>
 <br>
-<input type="submit" value="Rozpocznij grę">
+<input type="submit" value="Rozpocznij grę" class="start-game-button">
+{% comment %} <input type="submit" value="Rozpocznij grę"> {% endcomment %}
 
 </form>
 
 {% endblock %}
 
-{% comment %} --------- Uwagi do tego co na górze 
-{{ form.media }} - link do JS  {% endcomment %}

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block head %}
-{{ form.media }}
+{% comment %} {{ form.media }} {% endcomment %}
 <style>
    table {
       background-color: green;
@@ -26,6 +26,13 @@
    table tr:nth-child(even) {
       background-color: #f2f2f2;
    }
+   h1 {
+    color: #336600;
+ }
+ body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 </style>
 {% endblock %}
 

@@ -14,7 +14,9 @@
         font-size: 80px;
         font-family: Helvetica, sans-serif;
       }
-   
+      h1 {
+        color: #336600;
+     }
 </style>
 {% csrf_token %}
 
@@ -22,7 +24,7 @@
 {% endblock %}
 {% block content %}
 <span>
-ROZGRYWKA NUMER : {{ id }}  
+<h1>ROZGRYWKA NUMER : {{ id }} </h1> <br><br>
 
 
 
