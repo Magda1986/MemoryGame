@@ -1,4 +1,5 @@
 {% extends "omnie/Homepage.html" %}
+{% load static %}
 
 {% block content %}
 <!DOCTYPE html>
@@ -9,10 +10,6 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-    }
-
-    h1 {
-      color: #FF9800;
     }
 
     .fun-fact {
@@ -29,18 +26,19 @@
 <body>
   <h1>Witaj na stronie Niepowtarzalnej Ja!</h1>
 
-  <h2>O Mnie</h2>
   <p>Cześć, jestem zwyczajną kobietą, mama trzech niesamowitych synów i jestem mistrzyni w multitaskingu!</p>
 
   <div class="fun-fact">
-    <p>Zastanawiasz się, jakie mam supermoce jako mama? Oto jedna z nich: potrafię odkurzać, gotować i zamieniać bieżące sytuacje w stand-up comedy - jednocześnie!</p>
+    <p>Zastanawiasz się, jakie mam supermoce jako mama?<br> Oto jedna z nich: potrafię odkurzać, gotować i zamieniać bieżące sytuacje w stand-up comedy - jednocześnie!</p>
   </div>
 
   <h2>Moje Dzieło - Memo Game</h2>
-  <p>Jednym z moich największych osiągnięć jako matki było stworzenie wspaniałej gry memo dla moich synów. To połączenie nauki i zabawy!</p>
+  <p>Jednym z moich największych osiągnięć jako matki było stworzenie wspaniałej gry memo dla moich synów.<br> 
+    To połączenie nauki i zabawy!</p>
 
   <div class="game-link">
-    <p>Zapraszam Cię do zagrania w Memo Game! Kliknij <a href="http://127.0.0.1:8000/gra/">tutaj</a>, aby zacząć przygodę!</p>
+    <p>Zapraszam Cię do zagrania w Memo Game! <br>
+        Kliknij <a href="http://127.0.0.1:8000/gra/">tutaj</a>, aby zacząć przygodę!</p>
   </div>
 
   <footer>

@@ -2,56 +2,56 @@
 {% load static %}
 
 {% block head %}
-
+{{ form.media }}
 <style>
-      table {
-        background-color: pink;
-        border-collapse: collapse;
-        width: 100%;
-        margin-bottom: 20px;
-      }
-      
-      table th,
-      table td {
-        padding: 10px;
-        text-align: center;
-        border: 1px solid #ddd;
-      }
-      
-      table th {
-        background-color: #fff;
-        font-weight: bold;
-      }
-      
-      table tr:nth-child(even) {
-        background-color: #f2f2f2;
-      }
-</style>
+   table {
+      background-color: green;
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+   }
 
+   table th,
+   table td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+   }
+
+   table th {
+      background-color: #fff;
+      font-weight: bold;
+   }
+
+   table tr:nth-child(even) {
+      background-color: #f2f2f2;
+   }
+</style>
 {% endblock %}
 
 {% block content %}
 
-<h1>Wyniki gry</h1>
 <table>
-  <thead>
-    <tr>
-      <th>Nazwa gracza 1</th>
-      <th>Nazwa gracza 2</th>
-      <th>Liczba kart</th>
-      <th>Liczba ruchów</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for wynik in wyniki %}
+   <thead>
       <tr>
-        <td>{{ wynik.player1 }}</td>
-        <td>{{ wynik.player2 }}</td>
-        <td>{{ wynik.pairs_total }}</td>
-        <td>{{ wynik.moves }}</td>
+         <th>Numer Rozgrywki</th>
+         <th>Nazwa gracza 1</th>
+         <th>Nazwa gracza 2</th>
+         <th>Liczba kart</th>
+         <th>Liczba ruchów</th>
       </tr>
-    {% endfor %}
-  </tbody>
+   </thead>
+   <tbody>
+      {% for wynik in wyniki %}
+      <tr>
+         <td>{{"Tu będzie numer rozgrywki"}}</td>
+         <td>{{ wynik.player1 }}</td>
+         <td>{{ wynik.player2 }}</td>
+         <td>{{ wynik.pairs_total }}</td>
+         <td>{{ wynik.moves }}</td>
+      </tr>
+      {% endfor %}
+   </tbody>
 </table>
 
 {% endblock %}

@@ -15,7 +15,7 @@ def gra(request, *args, **kwargs):
         test.save()
         game=NewGame.objects.get(id=test.id)
         return redirect(f"rozgrywka/{test.id}/")
-    contex = {"nazwa" : "gra", "form" : form, }
+    contex = {"nazwa" : "Gra", "form" : form, }
     return render(request, "gra/gra.html", contex)
 
 
@@ -36,13 +36,12 @@ def moves(request, id):
     else:
         return JsonResponse({'success': False})
 
+
 def wyniki(request):
     # pobieramy wszystkie obiekty NewGame z bazy danych
     wyniki = NewGame.objects.all()
-
-    # inicjujemu pustą listę, do której będziemy dodawać wyniki
+    # inicjujemy pustą listę, do której będziemy dodawać wyniki
     wyniki_list = []
-
     # przejdź przez każdy obiekt NewGame i dodaj go do listy wyników
     for wynik in wyniki:
         # pobierz nazwy graczy, liczbę par i liczbę ruchów dla każdej gry
@@ -58,10 +57,15 @@ def wyniki(request):
             'pairs_total': pairs_total,
             'moves': moves
         })
-
+    
+    context = {
+        'nazwa': 'Wyniki Gry',
+        'wyniki': wyniki_list
+    }
+    
     # przekazuję listę wyników do szablonu HTML
-    return render(request, 'gra/wyniki.html', {'wyniki': wyniki_list})
-
+    return render(request, 'gra/wyniki.html', context)
+    
 
 
 # def create_playboard(cards_no, row_len=4):

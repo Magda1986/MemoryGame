@@ -8,7 +8,7 @@ def Homepage(request, *args, **kwargs):
     return render(request, 'omnie/Homepage.html', contex)
 
 def omnie(request):
-    contex = {"nazwa":"omnie"}
+    contex = {"nazwa":"O mnie"}
     return render(request, 'omnie/omnie.html', contex)
 
 #def Kontakt(request, *args, **kwargs):
