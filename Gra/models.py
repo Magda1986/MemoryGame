@@ -15,6 +15,7 @@ class NewGame(models.Model):
     player2 = models.CharField(max_length=15, blank=True)
     number_cards = models.IntegerField(choices=cards)
     playboard = models.JSONField(blank=True, null=True)  # generuje sie jako pusty
+    # curent_playboard =
     moves = models.IntegerField(default=0)  # pole liczące ruchy graczy
 
     def save(self, *args, **kwargs):

@@ -6,12 +6,14 @@ $(document).ready(() => {
   let csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
   const movesDisplay = $('#moves-count'); // zmienn movesDisplay, przechowuje referencję do elementu HTML o identyfikatorze moves-count
   const pairsTotal = parseInt($('#pairs-count').text()); //const - constans - zmienna, ktora sie nie zmienia w trakcie trwania rozgrywki
+  const player1 = $('#player-1').text();
+  const player2 = $('#player-2').text();
   console.log(moves);
 
 
-    $('td').click(function() {
-      const currentCard = $(this);
-      const currentImg = currentCard.children('img');
+  $('td').click(function () {
+    const currentCard = $(this);
+    const currentImg = currentCard.children('img');
 
     if (!currentCard.hasClass('locked')) {
       if (firstCard === null) {
@@ -36,13 +38,13 @@ $(document).ready(() => {
             'X-CSRFToken': csrf_token
           },
           data: {
-            'moves': moves,
+            'moves': moves
           },
           dataType: 'json',
-          success: function(response) {
+          success: function (response) {
             movesDisplay.text(response.moves);
           },
-          error: function(xhr, status, error) {
+          error: function (xhr, status, error) {
             console.log('Wystąpił błąd:', error);
           }
         });
@@ -59,14 +61,14 @@ $(document).ready(() => {
           pairsFound++; //rownowazne  +=1
           firstCard = null;
           secondCard = null;
-          
+
           if (pairsFound === pairsTotal) {
             const endGameMessage = document.getElementById('end-game-message');
             endGameMessage.textContent = 'Brawo! To już koniec gry!';
           }
-         
+
           //$('td.locked').removeClass('locked');
-        } 
+        }
         else {
           // Karty różne
           setTimeout(() => {

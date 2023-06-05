@@ -1,22 +1,38 @@
-
-
 {% extends "omnie/Homepage.html" %}
 {% load static %}
 {% block head %}
 
 
 <style>
-    table {border-collapse: collapse;} 
-    td {border-style: solid; border-width: 5px; border-color: white; padding: 5px; text-align: center; background-color: black; transition: 0.5s; }
-    img {width: 100px; filter: brightness(0.0); transition: 0.5s; }
+    table {
+        border-collapse: collapse;
+    }
+
+    td {
+        border-style: solid;
+        border-width: 5px;
+        border-color: white;
+        padding: 5px;
+        text-align: center;
+        background-color: black;
+        transition: 0.5s;
+    }
+
+    img {
+        width: 100px;
+        filter: brightness(0.0);
+        transition: 0.5s;
+    }
+
     #end-game-message {
         color: #E91E63;
         font-size: 80px;
         font-family: Helvetica, sans-serif;
-      }
-      h1 {
+    }
+
+    h1 {
         color: #336600;
-     }
+    }
 </style>
 {% csrf_token %}
 
@@ -24,18 +40,18 @@
 {% endblock %}
 {% block content %}
 <span>
-<h1>ROZGRYWKA NUMER : {{ id }} </h1> <br><br>
+    <h1>ROZGRYWKA NUMER : {{ id }} </h1> <br><br>
 
 
 
-{% comment %} Łaczna ilosc par na stole to: {{ pairs_total }}<br><br> {% endcomment %}
-Liczba par na stole: <span id="pairs-count">{{ pairs_total }}</span><br><br>
+    {% comment %} Łaczna ilosc par na stole to: {{ pairs_total }}<br><br> {% endcomment %}
+    Liczba par na stole: <span id="pairs-count">{{ pairs_total }}</span><br><br>
 
-Gracz 1: {{ player1 }}<br><br>
+    Gracz 1: <span id="player-1"> {{ player1 }} </span><br><br>
 
-Gracz 2: {{ player2 }}<br><br>
+    Gracz 2: <span id="player-2"> {{ player2 }} </span><br><br>
 
-Liczba ruchów: <span id="moves-count">{{ moves }}</span><br><br>
+    Liczba ruchów: <span id="moves-count">{{ moves }}</span><br><br>
 </span>
 
 <div id="end-game-message"></div>
@@ -44,10 +60,10 @@ Liczba ruchów: <span id="moves-count">{{ moves }}</span><br><br>
     {% for row in cards %}
     <tr>
         {% for card in row %}
-            <td>
-                <img src="{% static 'gra/' %}{{ card }}.jpeg"/>
-            </td>
-        
+        <td>
+            <img src="{% static 'gra/' %}{{ card }}.jpeg" />
+        </td>
+
         {% endfor %}
     </tr>
     {% endfor %}
