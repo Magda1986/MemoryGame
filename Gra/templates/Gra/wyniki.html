@@ -27,13 +27,15 @@
    table tr:nth-child(even) {
       background-color: #f2f2f2;
    }
+
    h1 {
-    color: #336600;
- }
- body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
+      color: #336600;
+   }
+
+   body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+   }
 </style>
 {% endblock %}
 
@@ -46,14 +48,14 @@
          <th>Numer Rozgrywki</th>
          <th>Nazwa gracza 1</th>
          <th>Nazwa gracza 2</th>
-         <th>Liczba kart</th>
+         <th>Liczba par</th>
          <th>Liczba ruchów</th>
       </tr>
    </thead>
    <tbody>
       {% for wynik in wyniki %}
       <tr>
-         <td>{{"Tu będzie numer rozgrywki"}}</td>
+         <td>{{ wynik.id }}</td>
          <td>{{ wynik.player1 }}</td>
          <td>{{ wynik.player2 }}</td>
          <td>{{ wynik.pairs_total }}</td>
