@@ -4,6 +4,11 @@
 
 
 <style>
+    .active {
+        background-color: green;
+        color: white;
+    }
+
     table {
         border-collapse: collapse;
     }
@@ -27,7 +32,7 @@
     #end-game-message {
         color: #E91E63;
         font-size: 80px;
-        font-family: Helvetica, sans-serif;
+        /* font-family: Arial, sans-serif; */
     }
 
     h1 {
@@ -39,20 +44,22 @@
 <script src="{% static 'gra/playboard.js' %}"></script>
 {% endblock %}
 {% block content %}
-<span>
-    <h1>ROZGRYWKA NUMER : {{ id }} </h1> <br><br>
 
+<body>
+    <span>
+        <h1>ROZGRYWKA NUMER : {{ id }} </h1> <br><br>
 
+        Liczba par na stole: <span id="pairs-count">{{ pairs_total }}</span><br><br>
 
-    {% comment %} Łaczna ilosc par na stole to: {{ pairs_total }}<br><br> {% endcomment %}
-    Liczba par na stole: <span id="pairs-count">{{ pairs_total }}</span><br><br>
+        Gracz 1: <span id="player1"> {{ player1 }} </span> <br>
+        Liczba znalezionych par: <span id="scoreplayer1"> {{ scoreplayer1 }} </span><br><br>
 
-    Gracz 1: <span id="player-1"> {{ player1 }} </span><br><br>
+        Gracz 2: <span id="player2"> {{ player2 }} </span> <br>
+        Liczba znalezionych par: <span id="scoreplayer2"> {{ scoreplayer2 }} </span><br><br>
 
-    Gracz 2: <span id="player-2"> {{ player2 }} </span><br><br>
-
-    Liczba ruchów: <span id="moves-count">{{ moves }}</span><br><br>
-</span>
+        Liczba ruchów: <span id="moves-count">{{ moves }}</span><br><br>
+    </span>
+</body>
 
 <div id="end-game-message"></div>
 
@@ -68,7 +75,5 @@
     </tr>
     {% endfor %}
 </table>
-
-
 
 {% endblock %}

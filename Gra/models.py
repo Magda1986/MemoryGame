@@ -17,6 +17,9 @@ class NewGame(models.Model):
     playboard = models.JSONField(blank=True, null=True)  # generuje sie jako pusty
     # curent_playboard =
     moves = models.IntegerField(default=0)  # pole liczące ruchy graczy
+    winner = models.CharField(max_length=15, blank=True, null=True)
+    scoreplayer1 = models.IntegerField(blank=True, null=True, default=0)
+    scoreplayer2 = models.IntegerField(blank=True, null=True, default=0)
 
     def save(self, *args, **kwargs):
         if not self.playboard:

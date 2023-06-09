@@ -9,7 +9,7 @@
    {% block head %}
    <style>
       body {
-         font-family: Arial, sans-serif;
+         /* font-family: Arial, sans-serif; */
          text-align: center;
       }
 
@@ -18,16 +18,11 @@
       }
 
       h3 {
-        color: #E91E63;
-     }
+         color: #E91E63;
+      }
 
-      
-      {% comment %} footer {
-          color: red;
-      } {% endcomment %}
-      .fun-fact {
-         font-style: italic;
-         margin-bottom: 20px;
+      footer {
+         color: red;
       }
 
       .game-link {
@@ -37,7 +32,8 @@
 
       /* Dodajemy styl dla strony "Wyniki" */
       .wyniki-title {
-         color: inherit; /* Dziedziczy kolor czcionki */
+         color: inherit;
+         /* Dziedziczy kolor czcionki */
       }
    </style>
    {% endblock %}
@@ -58,76 +54,37 @@
          <h2>Zasady gry w Memo</h2>
          <p>Witaj w moim świecie niekończącej się walki z zapominalstwem! <br>
             Zasady gry w Memo są proste, ale pamiętanie ich może stanowić wyzwanie godne mistrza/mistrzyni pamięci!</p>
-       
+
          <h3>Krok 1: Przygotowanie</h3>
          <p>Uzupełnij formularz i rozmieść karty na stole tworząc tajemnicze układy. <br>
             Staraj się nie zgubić żadnej karty, bo to jak zgubienie skarpetki w praniu!</p>
-       
+
          <h3>Krok 2: Zapamiętywanie</h3>
          <p>Twoim celem jest odkrycie par kart. <br>
-            Pamiętaj, gdzie znajdują się poszczególne karty, bo zapomnienie to jak wpadnięcie na bananową skórkę - śmieszne, ale nie w tej grze!</p>
-       
+            Pamiętaj, gdzie znajdują się poszczególne karty, bo zapomnienie to jak wpadnięcie na bananową skórkę -
+            śmieszne, ale nie w tej grze!</p>
+
          <h3>Krok 3: Zgadywanie</h3>
          <p>Po zapamiętaniu lokalizacji kart, zacznij odsłaniać po dwie karty na raz. <br>
-             Znajdź pasujące do siebie pary i zgaduj tak, jakby od tego zależało twoje życie (bo w końcu zależy!).</p>
-       
+            Znajdź pasujące do siebie pary i zgaduj tak, jakby od tego zależało twoje życie (bo w końcu zależy!).</p>
+
          <h3>Krok 4: Złote zwycięstwo</h3>
          <p>Zdobądź jak najwięcej par, jak superbohater z superpamięcią! <br>
             Im więcej par, tym większe święto twojej pamięci!</p>
-       
-       <br>
+
+         <br>
 
          <h1>Gotowy/gotowa na wyzwanie?</h1>
          <p>Przygotuj swoje szare komórki i kliknij <a href="/gra">tutaj</a>, aby rozpocząć przygodę w świecie memo!</p>
-       <br>
-       <br>
-        
+         <br>
+         <br>
+
          {% endblock %}
-         <footer>
-            <p>&copy; 2023 Niepowtarzalna Ja. Wszystkie prawa zastrzeżone.</p>
-          </footer>
       </div>
-
    </div>
+   <footer>
+      <p>&copy; 2023 Niepowtarzalna Ja. Wszystkie prawa zastrzeżone.</p>
+   </footer>
 </body>
 
 </html>
-
-
-{% comment %} 
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-   <meta charset="UTF-8">
-   <title>{% block title %}Title{% endblock %}</title>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-
-
-   {% block head %}
-   {% endblock %}
-</head>
-
-<body>
-<div>
-    <div>
-        <h1>{{ nazwa }}</h1>
-    </div>
-
-    <div>
-    {% include "omnie/paseknawigacyjny.html" %}
-
-    {% block content %}
-        Jesteś na stronie głównej gry memory
-    
-    {% endblock %}
-   </div>
-
-</div>
-</body>
-
-</html>
-
- {% endcomment %}

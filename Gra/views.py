@@ -41,25 +41,6 @@ def moves(request, id):
 
 
 def wyniki(request):
-    # # pobieramy wszystkie obiekty NewGame z bazy danych
-    # wyniki = NewGame.objects.all()
-    # # inicjujemy pustą listę, do której będziemy dodawać wyniki
-    # wyniki_list = []
-    # # przejdź przez każdy obiekt NewGame i dodaj go do listy wyników
-    # for wynik in wyniki:
-    #     # pobierz nazwy graczy, liczbę par i liczbę ruchów dla każdej gry
-    #     if wynik.moves:
-    #         # dodajemy wyniki do listy wyników
-    #         wyniki_list.append(
-    #             {
-    #                 "id": wynik.id,
-    #                 "player1": wynik.player1,
-    #                 "player2": wynik.player2,
-    #                 "moves": wynik.moves,
-    #                 "pairs_total": round(wynik.number_cards * 0.5),
-    #             }
-    #         )
-
     wyniki_list = [
         {
             "id": wynik.id,
