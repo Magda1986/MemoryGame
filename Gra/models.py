@@ -7,7 +7,19 @@ cards = [(4, "4 cards"), (8, "8 cards"), (16, "16 cards"), (32, "32 cards")]
 def create_playboard(cards_no, row_len=8):
     deck = 2 * list(range(int(0.5 * cards_no)))  # tworzymy talie kart
     shuffle(deck)  # tasowanie
-    return [deck[i : i + row_len] for i in range(0, len(deck), row_len)]  # ukladanie kart na planszy
+    split_list = []
+    temp_list = []
+
+    for i, val in enumerate(deck):
+        temp_list.append({"card": val, "found": False})
+        if (i + 1) % row_len == 0:
+            split_list.append(temp_list)
+            temp_list = []
+
+    # Add the remaining elements if the length is not divisible by row_length
+    if temp_list:
+        split_list.append(temp_list)
+    return split_list
 
 
 class NewGame(models.Model):

@@ -1,79 +1,90 @@
-{% extends "omnie/Homepage.html" %}
-{% load static %}
-{% block head %}
-
+{% extends "omnie/Homepage.html" %} {% load static %} {% block head %}
 
 <style>
-    .active {
-        background-color: green;
-        color: white;
-    }
+  .active {
+    background-color: green;
+    color: white;
+  }
 
-    table {
-        border-collapse: collapse;
-    }
+  table {
+    border-collapse: collapse;
+  }
 
-    td {
-        border-style: solid;
-        border-width: 5px;
-        border-color: white;
-        padding: 5px;
-        text-align: center;
-        background-color: black;
-        transition: 0.5s;
-    }
+  td {
+    border-style: solid;
+    border-width: 5px;
+    border-color: white;
+    padding: 5px;
+    text-align: center;
+    background-color: black;
+    transition: 0.5s;
+  }
 
-    img {
-        width: 100px;
-        filter: brightness(0.0);
-        transition: 0.5s;
-    }
+  .notfound {
+    width: 100px;
+    filter: brightness(0);
+    transition: 0.5s;
+  }
+  .found {
+    width: 100px;
+    filter: brightness(1);
+    transition: 0.5s;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  #end-game-message {
+    color: #e91e63;
+    font-size: 80px;
+    /* font-family: Arial, sans-serif; */
+  }
 
-    #end-game-message {
-        color: #E91E63;
-        font-size: 80px;
-        /* font-family: Arial, sans-serif; */
-    }
-
-    h1 {
-        color: #336600;
-    }
+  h1 {
+    color: #336600;
+  }
 </style>
 {% csrf_token %}
 
 <script src="{% static 'gra/playboard.js' %}"></script>
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 
 <body>
-    <span>
-        <h1>ROZGRYWKA NUMER : {{ id }} </h1> <br><br>
+  <span>
+    <h1>ROZGRYWKA NUMER : {{ id }}</h1>
+    <br /><br />
 
-        Liczba par na stole: <span id="pairs-count">{{ pairs_total }}</span><br><br>
+    Liczba par na stole: <span id="pairs-count">{{ pairs_total }}</span
+    ><br /><br />
 
-        Gracz 1: <span id="player1"> {{ player1 }} </span> <br>
-        Liczba znalezionych par: <span id="scoreplayer1"> {{ scoreplayer1 }} </span><br><br>
+    Gracz 1: <span id="player1"> {{ player1 }} </span> <br />
+    Liczba znalezionych par: <span id="scoreplayer1">{{ scoreplayer1 }}</span
+    ><br /><br />
 
-        Gracz 2: <span id="player2"> {{ player2 }} </span> <br>
-        Liczba znalezionych par: <span id="scoreplayer2"> {{ scoreplayer2 }} </span><br><br>
+    Gracz 2: <span id="player2"> {{ player2 }} </span> <br />
+    Liczba znalezionych par: <span id="scoreplayer2">{{ scoreplayer2 }}</span
+    ><br /><br />
 
-        Liczba ruchów: <span id="moves-count">{{ moves }}</span><br><br>
-    </span>
+    Liczba ruchów: <span id="moves-count">{{ moves }}</span><br /><br />
+  </span>
 </body>
 
 <div id="end-game-message"></div>
 
-<table style="border-width: 3px; ">
-    {% for row in cards %}
-    <tr>
-        {% for card in row %}
-        <td>
-            <img src="{% static 'gra/' %}{{ card }}.jpeg" />
+<table style="border-width: 3px">
+  {% for row in cards %}
+  <tr>
+    {% for card in row %}
+      {% if card.found %}
+        <td class="found">
+      {% else %}
+        <td class="notfound">
+      {% endif %}
+            <img src="{% static 'gra/' %}{{ card.card }}.jpeg" />
         </td>
-
-        {% endfor %}
-    </tr>
     {% endfor %}
+  </tr>
+  {% endfor %}
 </table>
 
 {% endblock %}
