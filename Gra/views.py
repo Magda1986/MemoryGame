@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewGameForm
+from .forms import NewGameForm, MoveForm
 
 # from jinja2 import Template
 from .models import NewGame, create_playboard
@@ -25,6 +25,9 @@ def rozgrywka(request, id):
         "id": id,
         "player1": game.player1,
         "player2": game.player2,
+        "scoreplayer1": game.scoreplayer1,
+        "scoreplayer2": game.scoreplayer2,
+        "moves": game.moves,
         "pairs_total": round(game.number_cards * 0.5),
     }
     return render(request, "gra/rozgrywka.html", context)
@@ -33,8 +36,10 @@ def rozgrywka(request, id):
 def moves(request, id):
     if request.method == "POST":
         game = NewGame.objects.filter(id=id)
-        moves = request.POST.get("moves")
-        game.update(moves=moves)
+        moveForm = MoveForm(request.POST)
+        if moveForm.is_valid():
+            updatedData = moveForm.cleaned_data
+            game.update(**updatedData)
         return JsonResponse({"success": True})
     else:
         return JsonResponse({"success": False})

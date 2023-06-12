@@ -21,5 +21,5 @@ class NewGameForm (forms.ModelForm):
 class MoveForm(forms.ModelForm):
     class Meta:
         model = NewGame
-        fields = ["moves"]
+        fields = ["moves", "winner", "scoreplayer1", "scoreplayer2"]
     
