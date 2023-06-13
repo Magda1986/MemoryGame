@@ -25,15 +25,18 @@
     filter: brightness(0);
     transition: 0.5s;
   }
+
   .found {
     width: 100px;
     filter: brightness(1);
     transition: 0.5s;
   }
+
   img {
     max-width: 100%;
     height: auto;
   }
+
   #end-game-message {
     color: #e91e63;
     font-size: 80px;
@@ -54,16 +57,13 @@
     <h1>ROZGRYWKA NUMER : {{ id }}</h1>
     <br /><br />
 
-    Liczba par na stole: <span id="pairs-count">{{ pairs_total }}</span
-    ><br /><br />
+    Liczba par na stole: <span id="pairs-count">{{ pairs_total }}</span><br /><br />
 
     Gracz 1: <span id="player1"> {{ player1 }} </span> <br />
-    Liczba znalezionych par: <span id="scoreplayer1">{{ scoreplayer1 }}</span
-    ><br /><br />
+    Liczba znalezionych par: <span id="scoreplayer1">{{ scoreplayer1 }}</span><br /><br />
 
     Gracz 2: <span id="player2"> {{ player2 }} </span> <br />
-    Liczba znalezionych par: <span id="scoreplayer2">{{ scoreplayer2 }}</span
-    ><br /><br />
+    Liczba znalezionych par: <span id="scoreplayer2">{{ scoreplayer2 }}</span><br /><br />
 
     Liczba ruchów: <span id="moves-count">{{ moves }}</span><br /><br />
   </span>
@@ -75,13 +75,13 @@
   {% for row in cards %}
   <tr>
     {% for card in row %}
-      {% if card.found %}
-        <td class="found">
+    {% if card.found %}
+    <td class="found">
       {% else %}
-        <td class="notfound">
+    <td class="notfound">
       {% endif %}
-            <img src="{% static 'gra/' %}{{ card.card }}.jpeg" />
-        </td>
+      <img src="{% static 'gra/' %}{{ card.card }}.jpeg" />
+    </td>
     {% endfor %}
   </tr>
   {% endfor %}

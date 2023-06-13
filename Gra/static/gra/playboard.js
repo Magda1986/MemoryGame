@@ -19,49 +19,33 @@ $(document).ready(() => {
   // player2.removeClass('active');
 
   $('td').click(function () {
+    console.log('clicked!')
     const currentCard = $(this);
     const currentImg = currentCard.children('img')
+
+    console.log(JSON.stringify(currentCard, null, 2))
+    console.log(currentCard)
 
     if (!currentCard.hasClass('locked')) {
       if (firstCard === null) {
         // Odkrycie pierwszej karty
         currentCard.css('background-color', 'white');
-        currentImg.css('filter', 'brightness(100%)');
+        currentCard.css('filter', 'brightness(100%)');
         firstCard = currentCard;
         currentCard.addClass('locked');
       } else if (secondCard === null) {
         // Odkrycie drugiej karty
         const firstImg = firstCard.children('img');
         currentCard.css('background-color', 'white');
-        currentImg.css('filter', 'brightness(100%)');
+        currentCard.css('filter', 'brightness(100%)');
         secondCard = currentCard;
         currentCard.addClass('locked');
         moves++;
 
-        $.ajax({
-          url: 'moves/',
-          type: 'POST',
-          headers: {
-            'X-CSRFToken': csrf_token
-          },
-          data: {
-            'moves': moves,
-            // 'winner': winner,
-            // 'scoreplayer1': scoreplayer1,
-            // 'coreplayer2': scoreplayer2
-          },
-          dataType: 'json',
-          success: function (response) {
-            movesDisplay.text(response.moves);
-          },
-          error: function (xhr, status, error) {
-            console.log('Wystąpił błąd:', error);
-          }
-        });
 
         if (currentImg.attr('src') === firstImg.attr('src')) {
           // Karty takie same
-          currentImg.css('filter', 'brightness(50%)');
+          currentCard.css('filter', 'brightness(50%)');
           currentCard.css('background-color', 'grey')
           firstImg.css('filter', 'brightness(50%)');
           firstCard.css('background-color', 'grey')
@@ -102,9 +86,9 @@ $(document).ready(() => {
           // Karty różne
           setTimeout(() => {
             currentCard.css('background-color', 'black');
-            currentImg.css('filter', 'brightness(0%)');
+            currentCard.css('filter', 'brightness(0%)');
             firstCard.css('background-color', 'black');
-            firstImg.css('filter', 'brightness(0%)');
+            firstCard.css('filter', 'brightness(0%)');
             firstCard = null;
             secondCard = null;
             // moves++; //rownowazne moves =+1
@@ -124,6 +108,26 @@ $(document).ready(() => {
 
           }, 2000);
         }
+        $.ajax({
+          url: 'moves/',
+          type: 'POST',
+          headers: {
+            'X-CSRFToken': csrf_token
+          },
+          data: {
+            'moves': moves,
+            // 'winner': winner,
+            // 'scoreplayer1': scoreplayer1,
+            // 'coreplayer2': scoreplayer2
+          },
+          dataType: 'json',
+          success: function (response) {
+            movesDisplay.text(response.moves);
+          },
+          error: function (xhr, status, error) {
+            console.log('Wystąpił błąd:', error);
+          }
+        });
       }
     }
   });

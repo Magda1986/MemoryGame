@@ -66,5 +66,6 @@ def wyniki(request):
 
 # def create_playboard(cards_no, row_len=4):
 #     deck = 2 * list(range(int(0.5 * cards_no)))  #tworzymy talie kart
-#     shuffle(deck)# tasowanie
-#     return [deck[i: i+row_len] for i in range(0, len(deck), row_len)] #ukladanie kart na planszy
+#     shuffle(deck)# tasowanie for i in range(0, len(deck), row_len)] #ukladanie kart na planszy
+
+#     return [deck[i: i+row_len]
