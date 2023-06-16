@@ -1,5 +1,4 @@
 
-
 $(document).ready(() => {
   let firstCard = null;
   let secondCard = null;
@@ -29,15 +28,13 @@ $(document).ready(() => {
     if (!currentCard.hasClass('locked')) {
       if (firstCard === null) {
         // Odkrycie pierwszej karty
-        currentCard.css('background-color', 'white');
-        currentCard.css('filter', 'brightness(100%)');
+        currentCard.addClass('temporaryvisible');
         firstCard = currentCard;
         currentCard.addClass('locked');
       } else if (secondCard === null) {
         // Odkrycie drugiej karty
         const firstImg = firstCard.children('img');
-        currentCard.css('background-color', 'white');
-        currentCard.css('filter', 'brightness(100%)');
+        currentCard.addClass('temporaryvisible');
         secondCard = currentCard;
         currentCard.addClass('locked');
         moves++;
@@ -45,10 +42,7 @@ $(document).ready(() => {
 
         if (currentImg.attr('src') === firstImg.attr('src')) {
           // Karty takie same
-          currentCard.css('filter', 'brightness(50%)');
-          currentCard.css('background-color', 'grey')
-          firstImg.css('filter', 'brightness(50%)');
-          firstCard.css('background-color', 'grey')
+          currentCard.addClass('found')
           console.log(moves); // wyswietlatnie wartości zmiennej moves na konsoli przeglądarki po każdym zwiększeniu
           movesDisplay.text(moves);
           pairsFound++; //rownowazne  +=1
@@ -68,10 +62,10 @@ $(document).ready(() => {
             const endGameMessage = document.getElementById('end-game-message');
             if (scoreplayer1 > scoreplayer2) {
               endGameMessage.textContent = 'Brawo! Wygrał Gracz 1!';
-              winner = player1(text);
+              winner = player1.text();
             } else if (scoreplayer2 > scoreplayer1) {
               endGameMessage.textContent = 'Brawo! Wygrał Gracz 2!';
-              winner = player2(text);
+              winner = player2.text();
             } else {
               endGameMessage.textContent = 'Brawo! Ale to były emocje! Remis!';
               winner = "remis";
@@ -79,16 +73,15 @@ $(document).ready(() => {
             }
 
           }
-
-          //$('td.locked').removeClass('locked');
+          // $('td.locked').removeClass('locked');
         }
         else {
           // Karty różne
           setTimeout(() => {
-            currentCard.css('background-color', 'black');
-            currentCard.css('filter', 'brightness(0%)');
-            firstCard.css('background-color', 'black');
-            firstCard.css('filter', 'brightness(0%)');
+            currentCard.removeClass('temporaryvisible');
+            firstCard.removeClass('temporaryvisible');
+            currentCard.addClass('notfound');
+            firstCard.addClass('notfound');
             firstCard = null;
             secondCard = null;
             // moves++; //rownowazne moves =+1
@@ -116,9 +109,9 @@ $(document).ready(() => {
           },
           data: {
             'moves': moves,
-            // 'winner': winner,
-            // 'scoreplayer1': scoreplayer1,
-            // 'coreplayer2': scoreplayer2
+            'winner': winner,
+            'scoreplayer1': scoreplayer1,
+            'scoreplayer2': scoreplayer2,
           },
           dataType: 'json',
           success: function (response) {

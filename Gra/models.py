@@ -38,12 +38,4 @@ class NewGame(models.Model):
             self.playboard = create_playboard(self.number_cards)
         super().save(*args, **kwargs)
 
-    # number_cards = models.DecimalField(default=10 , max_digits=20, decimal_places=0)
 
-    # Nadpisywanie funkcji save do sprawdzeniam - do sprawdzenia. podczas zapisywania modelu tworzy się plansza!! W klasie name NADPISYWANIE FUNKCJI SAVE W DJANGO!!
-    # POLE PLANSZA
-    # BLANCK
-    # w trakcie swywołania funkcji save w tworzy sie playground
-
-
-# Create your models here.

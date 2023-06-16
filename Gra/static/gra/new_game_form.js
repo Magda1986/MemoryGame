@@ -1,3 +1,4 @@
+
 $(document).ready(function() { 
     $('#div_player2').hide();
     $('#id_player2_select').change(function(){
@@ -12,3 +13,21 @@ $(document).ready(function() {
     });
  });
 
+
+
+ 
+ // $(document).ready(function() {
+//     const player2Div = $('#div_player2');
+//     const player2Select = $('#id_player2_select');
+  
+//     player2Div.hide();
+  
+//     player2Select.change(function(){
+//       const selected = $(this).find("option:selected").attr('value'); 
+//       if (selected === "player3") {
+//         player2Div.hide();
+//       } else {
+//         player2Div.show();
+//       }
+//     });
+//   });

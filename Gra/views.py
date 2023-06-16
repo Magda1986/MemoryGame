@@ -50,12 +50,15 @@ def wyniki(request):
         {
             "id": wynik.id,
             "player1": wynik.player1,
+            "scoreplayer1": wynik.scoreplayer1,
             "player2": wynik.player2,
+            "scoreplayer2": wynik.scoreplayer2,
             "moves": wynik.moves,
             "pairs_total": round(wynik.number_cards * 0.5),
+            "winner": wynik.winner, 
         }
         for wynik in NewGame.objects.all()
-        if wynik.moves
+        if wynik.winner
     ]
 
     context = {"nazwa": "Wyniki Gry", "wyniki": wyniki_list}
@@ -63,9 +66,3 @@ def wyniki(request):
     # przekazuję listę wyników do szablonu HTML
     return render(request, "gra/wyniki.html", context)
 
-
-# def create_playboard(cards_no, row_len=4):
-#     deck = 2 * list(range(int(0.5 * cards_no)))  #tworzymy talie kart
-#     shuffle(deck)# tasowanie for i in range(0, len(deck), row_len)] #ukladanie kart na planszy
-
-#     return [deck[i: i+row_len]

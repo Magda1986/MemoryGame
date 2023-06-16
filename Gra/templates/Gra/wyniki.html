@@ -46,20 +46,29 @@
    <thead>
       <tr>
          <th>Numer Rozgrywki</th>
-         <th>Nazwa gracza 1</th>
-         <th>Nazwa gracza 2</th>
          <th>Liczba par</th>
          <th>Liczba ruchów</th>
+         <th>Nazwa gracza 1</th>
+         <th>Liczba par gracza 1</th>
+         <th>Nazwa gracza 2</th>
+         <th>Liczba par gracza 2</th>
+         <th>WYGRAŁ</th>
+
+         
       </tr>
    </thead>
    <tbody>
       {% for wynik in wyniki %}
       <tr>
          <td>{{ wynik.id }}</td>
-         <td>{{ wynik.player1 }}</td>
-         <td>{{ wynik.player2 }}</td>
          <td>{{ wynik.pairs_total }}</td>
          <td>{{ wynik.moves }}</td>
+         <td>{{ wynik.player1 }}</td>
+         <td>{{ wynik.scoreplayer1 }}</td>
+         <td>{{ wynik.player2 }}</td>
+         <td>{{ wynik.scoreplayer2 }}</td>
+         <td>{{ wynik.winner }}</td>
+         
       </tr>
       {% endfor %}
    </tbody>
