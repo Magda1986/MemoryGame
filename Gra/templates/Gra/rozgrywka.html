@@ -1,4 +1,5 @@
-{% extends "omnie/Homepage.html" %} {% load static %} {% block head %}
+{% extends "omnie/Homepage.html" %} {% load static %} 
+{% block head %}
 
 <style>
   .active {
@@ -58,7 +59,8 @@
 {% csrf_token %}
 
 <script src="{% static 'gra/playboard.js' %}"></script>
-{% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
 
 <body>
   <span>

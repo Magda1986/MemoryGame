@@ -1,9 +1,24 @@
 {% extends "omnie/Homepage.html" %}
 {% load static %}
-
-
-{% block content %}
+{% block head %}
 <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+     }
+
+    footer {
+        color: red;
+     }
+    
+    h1 {
+        color: #336600;
+     }
+
+    h3 {
+        color: #E91E63;
+     }
+
     .start-game-button {
         background-color: #FF4081;
         color: #FFFFFF;
@@ -18,6 +33,13 @@
         background-color: #E91E63;
     }
 </style>
+
+<script src="{% static 'gra/new_game_form.js' %}"></script>
+
+{% endblock %}
+{% block content %}
+
+<body>
 
 <br>
 <h1>Uzupełnij poniszy formularz, zeby rozpocząć rozgrywkę. </h1>
@@ -56,6 +78,6 @@
 
 
 </form>
-
+</body>
 {% endblock %}
 
