@@ -104,14 +104,10 @@
     {% for card in row %}
     {% if card.found %}
     <td class="found">
-      {% else %}
+    {% else %}
     <td class="notfound">
-      {% endif %}
-      {% if card.found %}
-      <span class="card-value">{{ card.card }}</span>
-      {% else %}
+    {% endif %}
       <img src="{% static 'gra/' %}{{ card.card }}.jpeg" />
-      {% endif %}
     </td>
     {% endfor %}
   </tr>
