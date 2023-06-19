@@ -27,15 +27,23 @@ class NewGame(models.Model):
     player2 = models.CharField(max_length=15, blank=True)
     number_cards = models.IntegerField(choices=cards)
     playboard = models.JSONField(blank=True, null=True)  # generuje sie jako pusty
-    # curent_playboard =
+    current_playboard = models.JSONField(blank=True, null=True) #stan gry po odkryciu kart
     moves = models.IntegerField(default=0)  # pole liczące ruchy graczy
-    winner = models.CharField(max_length=15, blank=True, null=True)
+    winner = models.CharField(max_length=15, blank=True, null=True) 
     scoreplayer1 = models.IntegerField(blank=True, null=True, default=0)
     scoreplayer2 = models.IntegerField(blank=True, null=True, default=0)
 
     def save(self, *args, **kwargs):
         if not self.playboard:
             self.playboard = create_playboard(self.number_cards)
+            self.current_playboard = self.playboard
+
+        if self.current_playboard:
+            for row in self.current_playboard:
+                for card in row:
+                    if card["found"]:
+                        self.playboard[row][card]["found"] = True
+
         super().save(*args, **kwargs)
 
 

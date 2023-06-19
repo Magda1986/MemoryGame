@@ -1,5 +1,6 @@
 
 $(document).ready(() => {
+  let current_playboard = [];
   let firstCard = null;
   let secondCard = null;
   let pairsFound = 0; // let - zmienna, która zmienia się w trakcie trwania rozgrywki
@@ -16,6 +17,7 @@ $(document).ready(() => {
 
   player1.addClass('active');
   // player2.removeClass('active');
+
 
   $('td').click(function () {
     console.log('clicked!')
@@ -43,6 +45,16 @@ $(document).ready(() => {
         if (currentImg.attr('src') === firstImg.attr('src')) {
           // Karty takie same
           currentCard.addClass('found')
+          firstCard.addClass('found');
+          // Znajdź indeksy odkrytych kart w current_playboard
+          //const firstCardIndex = findCardIndex(firstCard);
+          //const secondCardIndex = findCardIndex(currentCard);
+          //
+                // Zaktualizuj pole found w current_playboard
+          //current_playboard[0][firstCardIndex].found = true;
+          //current_playboard[0][secondCardIndex].found = true;
+          //
+
           console.log(moves); // wyswietlatnie wartości zmiennej moves na konsoli przeglądarki po każdym zwiększeniu
           movesDisplay.text(moves);
           pairsFound++; //rownowazne  +=1
@@ -112,13 +124,17 @@ $(document).ready(() => {
             'winner': winner,
             'scoreplayer1': scoreplayer1,
             'scoreplayer2': scoreplayer2,
+            'current_playboard': JSON.stringify(current_playboard),
           },
           dataType: 'json',
           success: function (response) {
             movesDisplay.text(response.moves);
+            current_playboard = response.current_playboard;
+            
           },
           error: function (xhr, status, error) {
             console.log('Wystąpił błąd:', error);
+
           }
         });
       }

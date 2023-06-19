@@ -81,7 +81,7 @@
 
 <div id="end-game-message"></div>
 
-<table style="border-width: 3px">
+{% comment %} <table style="border-width: 3px">
   {% for row in cards %}
   <tr>
     {% for card in row %}
@@ -95,6 +95,28 @@
     {% endfor %}
   </tr>
   {% endfor %}
+</table> {% endcomment %}
+
+
+<table style="border-width: 3px">
+  {% for row in current_playboard %}
+  <tr>
+    {% for card in row %}
+    {% if card.found %}
+    <td class="found">
+      {% else %}
+    <td class="notfound">
+      {% endif %}
+      {% if card.found %}
+      <span class="card-value">{{ card.card }}</span>
+      {% else %}
+      <img src="{% static 'gra/' %}{{ card.card }}.jpeg" />
+      {% endif %}
+    </td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
 </table>
+
 
 {% endblock %}

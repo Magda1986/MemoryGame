@@ -23,6 +23,7 @@ def rozgrywka(request, id):
     context = {
         "cards": game.playboard,
         "id": id,
+        "current_playboard": game.current_playboard,
         "player1": game.player1,
         "player2": game.player2,
         "scoreplayer1": game.scoreplayer1,
