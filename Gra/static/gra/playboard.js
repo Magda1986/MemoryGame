@@ -49,14 +49,24 @@ $(document).ready(() => {
       if (scoreplayer1 > scoreplayer2) {
         endGameMessage.textContent = "Brawo! Wygrał Gracz 1!";
         winner = player1.text();
+        var confettiSettings = { target: 'canvas' };
+        var confetti = new ConfettiGenerator(confettiSettings);
+        confetti.render();
       } else if (scoreplayer2 > scoreplayer1) {
         endGameMessage.textContent = "Brawo! Wygrał Gracz 2!";
         winner = player2.text();
+        var confettiSettings = { target: 'canvas' };
+        var confetti = new ConfettiGenerator(confettiSettings);
+        confetti.render();
       } else {
         endGameMessage.textContent = "Brawo! Ale to były emocje! Remis!";
         winner = "remis";
+        var confettiSettings = { target: 'canvas' };
+        var confetti = new ConfettiGenerator(confettiSettings);
+        confetti.render();
       }
     }
+
   }  
 
   player1.addClass("active");

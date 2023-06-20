@@ -1,3 +1,98 @@
+
+{% extends "omnie/Homepage.html" %}
+{% load static %}
+{% block head %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+     }
+
+    footer {
+        color: red;
+     }
+    
+    h1 {
+        color: #336600;
+     }
+
+    h3 {
+        color: #E91E63;
+     }
+
+    .start-game-button {
+        background-color: #FF4081;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .start-game-button:hover {
+        background-color: #E91E63;
+    }
+
+    .form-animation input,
+    .form-animation select {
+        transition: background-color 0.4s ease;
+    }
+
+    .form-animation input:focus,
+    .form-animation select:focus {
+        background-color: pink;
+    
+    }
+
+
+
+</style>
+
+{% endblock %}
+{% block content %}
+
+<body>
+
+<br>
+<h1>Uzupełnij poniższy formularz, aby rozpocząć rozgrywkę.</h1>
+
+<br>
+<br>
+
+<form method="POST" class="post-form form-animation">{% csrf_token %}
+    
+<br>
+<div class="fieldWrapper">
+    <label for="{{ form.player1.id_player1 }}">Gracz 1:</label>
+    {{ form.player1 }}
+</div>
+<br>
+<div class="fieldWrapper">
+    <label for="{{ form.player2.id_player2 }}">Gracz 2:</label>
+    {{ form.player2 }}
+</div>
+<br>
+<div class="fieldWrapper">
+    <label for="{{ form.number_cards.id_number_cards }}">Liczba kart:</label>
+    {{ form.number_cards }}
+</div>
+<br><br>
+<div>
+    <input type="submit" value="Rozpocznij grę" class="start-game-button">
+</div>
+
+</form>
+<br><br><br>
+</body>
+{% endblock %}
+
+
+
+
+
+
+{% comment %} 
 {% extends "omnie/Homepage.html" %}
 {% load static %}
 {% block head %}
@@ -34,8 +129,6 @@
     }
 </style>
 
-<script src="{% static 'gra/new_game_form.js' %}"></script>
-
 {% endblock %}
 {% block content %}
 
@@ -49,35 +142,54 @@
 
 <form method="POST" class="post-form">{% csrf_token %}
     
-    {{ form.non_field_errors }}
-<div id="pole1" class="fieldWrapper">
-    {{ form.player2_select.errors }}
-    <label for="{{ form.player2_select.id_player2_select }}">Grasz z sam czy z kimś?</label>
-    {{ form.player2_select }}
-</div>
 <br>
 <div class="fieldWrapper">
-    {{ form.player1.errors }}
-    <label for="{{ form.player1.id_player1 }}">Player1:</label>
+    <label for="{{ form.player1.id_player1 }}">Gracz 1:</label>
     {{ form.player1 }}
 </div>
 <br>
-<div id="div_player2" class="fieldWrapper">
-    {{ form.player2.errors }}
-    <label for="{{ form.player2.id_player2 }}">Player2:</label>
+<div class="fieldWrapper">
+    <label for="{{ form.player2.id_player2 }}">Gracz 2:</label>
     {{ form.player2 }}
 </div>
 <br>
 <div class="fieldWrapper">
-    {{ form.number_cards.errors }}
     <label for="{{ form.number_cards.id_number_cards }}">Liczba kart:</label>
     {{ form.number_cards }}
 </div>
 <br>
+<div>
 <input type="submit" value="Rozpocznij grę" class="start-game-button">
-
+</div>
 
 </form>
 </body>
 {% endblock %}
+
+
+
+
+
+ {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------- to co było wcześniej ---------
+
 

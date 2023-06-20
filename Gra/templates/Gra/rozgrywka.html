@@ -5,10 +5,17 @@
   .active {
     background-color: green;
     color: white;
+    z-index: 1;
   }
+
+  footer {
+    color: red;
+    z-index: 1;
+ }
 
   table {
     border-collapse: collapse;
+    z-index: 1;
   }
 
   td {
@@ -19,6 +26,7 @@
     text-align: center;
     background-color: black;
     transition: 0.5s;
+    z-index: 1;
   }
 
   .notfound {
@@ -26,6 +34,7 @@
     background-colour: black;
     filter: brightness(0);
     transition: 0.5s;
+    z-index: 1;
   }
 
   .found {
@@ -33,32 +42,51 @@
     background-color: grey;
     filter: brightness(0.5);
     transition: 0.5s;
+    z-index: 1;
   }
 
   .temporaryvisible {
     background-color: white;
     filter: brightness(1);
+    z-index: 1;
 
   }
 
   img {
     max-width: 100%;
     height: auto;
+    z-index: 1;
   }
 
   #end-game-message {
     color: #e91e63;
     font-size: 80px;
     /* font-family: Arial, sans-serif; */
+    z-index: 1;
   }
-
+  canvas {
+    display: block;
+    position: relative;
+    zindex: -1;
+    pointer-events: none;
+  
+  }
+  
+  
+  .buttonContainer {
+    display: inline-block;
+    z-index: 1;
+  }
+  
   h1 {
     color: #336600;
+    z-index: 1;
   }
 </style>
 {% csrf_token %}
 
 <script src="{% static 'gra/playboard.js' %}"></script>
+
 {% endblock %} 
 {% block content %}
 
@@ -77,25 +105,8 @@
 
     Liczba ruchów: <span id="moves-count">{{ moves }}</span><br /><br />
   </span>
-</body>
 
 <div id="end-game-message"></div>
-
-{% comment %} <table style="border-width: 3px">
-  {% for row in cards %}
-  <tr>
-    {% for card in row %}
-    {% if card.found %}
-    <td class="found">
-      {% else %}
-    <td class="notfound">
-      {% endif %}
-      <img src="{% static 'gra/' %}{{ card.card }}.jpeg" />
-    </td>
-    {% endfor %}
-  </tr>
-  {% endfor %}
-</table> {% endcomment %}
 
 
 <table style="border-width: 3px">
@@ -113,6 +124,13 @@
   </tr>
   {% endfor %}
 </table>
+
+
+<script src="{% static 'gra/confetti.js' %}"></script>
+<canvas id="canvas"></canvas>
+
+</body>
+
 
 
 {% endblock %}
