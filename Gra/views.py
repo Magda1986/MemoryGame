@@ -26,6 +26,7 @@ def rozgrywka(request, id):
         "current_playboard": game.current_playboard,
         "player1": game.player1,
         "player2": game.player2,
+        "currentPlayer": game.currentPlayer,
         "scoreplayer1": game.scoreplayer1,
         "scoreplayer2": game.scoreplayer2,
         "moves": game.moves,
@@ -40,6 +41,7 @@ def moves(request, id):
         moveForm = MoveForm(request.POST)
         if moveForm.is_valid():
             updatedData = moveForm.cleaned_data
+            updatedData['currentPlayer'] = request.POST.get("currentPlayer", "")
             game.update(**updatedData)
         return JsonResponse({"success": True})
     else:

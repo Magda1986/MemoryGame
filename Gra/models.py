@@ -28,6 +28,7 @@ class NewGame(models.Model):
     number_cards = models.IntegerField(choices=cards)
     playboard = models.JSONField(blank=True, null=True)  # generuje sie jako pusty
     current_playboard = models.JSONField(blank=True, null=True) #stan gry po odkryciu kart
+    currentPlayer=models.CharField(max_length=15, blank=True)
     moves = models.IntegerField(default=0)  # pole liczące ruchy graczy
     winner = models.CharField(max_length=15, blank=True, null=True) 
     scoreplayer1 = models.IntegerField(blank=True, null=True, default=0)

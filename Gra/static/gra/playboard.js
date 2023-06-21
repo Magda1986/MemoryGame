@@ -85,6 +85,7 @@ $(document).ready(() => {
         currentCard.addClass("temporaryvisible");
         firstCard = currentCard;
         currentCard.addClass("locked");
+        
       } else if (secondCard === null) {
         // Odkrycie drugiej karty
         const firstImg = firstCard.children("img");
@@ -147,6 +148,7 @@ $(document).ready(() => {
             scoreplayer1: scoreplayer1,
             scoreplayer2: scoreplayer2,
             current_playboard: JSON.stringify(current_playboard),
+            currentPlayer: currentPlayer,
           },
           dataType: "json",
           success: function (response) {
@@ -156,6 +158,7 @@ $(document).ready(() => {
             console.log("Wystąpił błąd:", error);
           },
         });
+        console.log(currentPlayer);
       }
     }
   });
